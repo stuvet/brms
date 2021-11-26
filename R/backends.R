@@ -282,7 +282,9 @@ fit_model <- function(model, backend, ...) {
   } else {
     stop2("Algorithm '", algorithm, "' is not supported.")
   }
-  print(out)
+  
+  saveRDS(args, 'args.Rds')
+  saveRDS(out, 'out.Rds')
   # a lot of metadata is not stored via rstan::read_stan_csv
   metadata <- cmdstanr::read_cmdstan_csv(
     out$output_files(), variables = "", sampler_diagnostics = ""
